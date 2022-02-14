@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+'use strict';
+
+process.title = 'async-allege-web';
+
+const nodejs = require('@hai2007/nodejs');
+
+// 命令行传递的参数
+const parsed = nodejs.option({}, process.argv);
+
+console.log(parsed)
