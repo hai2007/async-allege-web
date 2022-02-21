@@ -1,5 +1,0 @@
-{
-  "scripts": {
-    "test1": "node ../bin/run update --key1 v1-1 v1-2 --key2 --key3 v3-1"
-  }
-}
