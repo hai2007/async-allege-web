@@ -27,7 +27,7 @@ npm install --save async-allege-web
 
 <head>
     <meta charset="UTF-8">
-    <script src=".node_modules/async-allege-web/dist/async-allege-web.js"></script>
+    <script src="node_modules/async-allege-web/dist/async-allege-web.js"></script>
 </head>
 
 <body>
@@ -47,7 +47,7 @@ npm install --save async-allege-web
 
 ### 断言语句
 
-可以在```测试语句```中使用的推断是否成功等的语句，我们在下面列出：
+可以在```测试语句```文件中使用的推断是否成功等的语句，我们在下面列出：
 
 > 温馨提示：设计开发中，敬请期待！
 
