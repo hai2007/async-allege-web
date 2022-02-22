@@ -1,1 +1,58 @@
-[async-allege-web] {}
+[async-allege-web] {
+    position: fixed;
+    left: 50px;
+    top: 50px;
+    background-color: #8bc34a;
+    border: 4px solid #8bc34a;
+    box-shadow: 0 0 14px 6px white;
+
+    li {
+        /* 去掉前置索引 */
+        list-style-type: none;
+    }
+
+    ul,
+    li,
+    h2 {
+        /* 去掉不喜欢的间距 */
+        -webkit-margin-before: 0;
+        -webkit-margin-after: 0;
+        -webkit-padding-start: 0;
+
+        /* 去掉不喜欢的间距，针对火狐浏览器等 */
+        margin-block-end: 0;
+        margin-block-start: 0;
+        padding-inline-start: 0;
+
+        /* 修改IE和其它浏览器不一致问题 */
+        padding: 0;
+        margin: 0;
+    }
+
+    &>h2 {
+
+        user-select: none;
+        font-size: 12px;
+        padding: 10px;
+        cursor: move;
+    }
+
+    &>div {
+        background-color: white;
+        height: 300px;
+        width: 240px;
+        overflow: auto;
+
+        &>fieldset {
+            &>legend {
+                font-weight: 800;
+            }
+
+            &>ul {
+                &>li {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

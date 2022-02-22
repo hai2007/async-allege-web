@@ -28,18 +28,18 @@ module.exports = {
 
                 let banner =
                     `/*!
-     * Async Allege Web - ${pkg.description}
-     * ${pkg.repository.url}
-     *
-     * author ${pkg.author} < https://hai2007.gitee.io/sweethome >
-     *
-     * version ${pkg.version}
-     *
-     * Copyright (c) 2022 hai2007 走一步，再走一步。
-     * Released under the ${pkg.license} license
-     *
-     * Date:${new Date()}
-     */`;
+ * Async Allege Web - ${pkg.description}
+ * ${pkg.repository.url}
+ *
+ * author ${pkg.author} < https://hai2007.gitee.io/sweethome >
+ *
+ * version ${pkg.version}
+ *
+ * Copyright (c) 2022 hai2007 走一步，再走一步。
+ * Released under the ${pkg.license} license
+ *
+ * Date:${new Date()}
+ */`;
 
                 fs.writeFileSync(filePath, banner + "\n" + fs.readFileSync(filePath));
 
