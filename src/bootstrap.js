@@ -40,5 +40,9 @@ export let addResult = function (el, flag, mark) {
     let li = document.createElement('li');
     li.innerText = mark + "：" + flag;
 
+    if (!flag) {
+        li.setAttribute('class', 'error');
+    }
+
     el.appendChild(li);
 };

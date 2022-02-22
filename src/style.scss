@@ -5,6 +5,7 @@
     background-color: #8bc34a;
     border: 4px solid #8bc34a;
     box-shadow: 0 0 14px 6px white;
+    font-family: cursive;
 
     li {
         /* 去掉前置索引 */
@@ -44,13 +45,23 @@
         overflow: auto;
 
         &>fieldset {
+            margin-top: 10px;
+
             &>legend {
                 font-weight: 800;
+                font-size: 14px;
             }
 
             &>ul {
                 &>li {
                     font-size: 12px;
+                    list-style-type: disclosure-closed;
+                    margin: 5px 0;
+                    margin-left: 10px;
+
+                    &.error {
+                        color: red;
+                    }
                 }
             }
         }

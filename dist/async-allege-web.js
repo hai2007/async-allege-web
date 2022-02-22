@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.1.0
+ * version 0.1.1
  *
  * Copyright (c) 2022 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Tue Feb 22 2022 17:16:58 GMT+0800 (GMT+08:00)
+ * Date:Tue Feb 22 2022 17:37:53 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -347,6 +347,11 @@
   var addResult = function addResult(el, flag, mark) {
     var li = document.createElement('li');
     li.innerText = mark + "：" + flag;
+
+    if (!flag) {
+      li.setAttribute('class', 'error');
+    }
+
     el.appendChild(li);
   };
 
@@ -359,7 +364,7 @@
     head.appendChild(styleElement);
   }
 
-  addStylesClient("\n [async-allege-web]{\n\nposition: fixed;\n\nleft: 50px;\n\ntop: 50px;\n\nbackground-color: #8bc34a;\n\nborder: 4px solid #8bc34a;\n\nbox-shadow: 0 0 14px 6px white;\n\n}\n/* 去掉前置索引 */\n [async-allege-web] li{\n\nlist-style-type: none;\n\n}\n/* 去掉不喜欢的间距 */\n [async-allege-web] ul, [async-allege-web] li, [async-allege-web] h2{\n\n-webkit-margin-before: 0;\n\n-webkit-margin-after: 0;\n\n-webkit-padding-start: 0;\n/* 去掉不喜欢的间距，针对火狐浏览器等 */\nmargin-block-end: 0;\n\nmargin-block-start: 0;\n\npadding-inline-start: 0;\n/* 修改IE和其它浏览器不一致问题 */\npadding: 0;\n\nmargin: 0;\n\n}\n\n [async-allege-web]>h2{\n\nuser-select: none;\n\nfont-size: 12px;\n\npadding: 10px;\n\ncursor: move;\n\n}\n\n [async-allege-web]>div{\n\nbackground-color: white;\n\nheight: 300px;\n\nwidth: 240px;\n\noverflow: auto;\n\n}\n\n [async-allege-web]>div>fieldset>legend{\n\nfont-weight: 800;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li{\n\nfont-size: 12px;\n\n}\n");
+  addStylesClient("\n [async-allege-web]{\n\nposition: fixed;\n\nleft: 50px;\n\ntop: 50px;\n\nbackground-color: #8bc34a;\n\nborder: 4px solid #8bc34a;\n\nbox-shadow: 0 0 14px 6px white;\n\nfont-family: cursive;\n\n}\n/* 去掉前置索引 */\n [async-allege-web] li{\n\nlist-style-type: none;\n\n}\n/* 去掉不喜欢的间距 */\n [async-allege-web] ul, [async-allege-web] li, [async-allege-web] h2{\n\n-webkit-margin-before: 0;\n\n-webkit-margin-after: 0;\n\n-webkit-padding-start: 0;\n/* 去掉不喜欢的间距，针对火狐浏览器等 */\nmargin-block-end: 0;\n\nmargin-block-start: 0;\n\npadding-inline-start: 0;\n/* 修改IE和其它浏览器不一致问题 */\npadding: 0;\n\nmargin: 0;\n\n}\n\n [async-allege-web]>h2{\n\nuser-select: none;\n\nfont-size: 12px;\n\npadding: 10px;\n\ncursor: move;\n\n}\n\n [async-allege-web]>div{\n\nbackground-color: white;\n\nheight: 300px;\n\nwidth: 240px;\n\noverflow: auto;\n\n}\n\n [async-allege-web]>div>fieldset{\n\nmargin-top: 10px;\n\n}\n\n [async-allege-web]>div>fieldset>legend{\n\nfont-weight: 800;\n\nfont-size: 14px;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li{\n\nfont-size: 12px;\n\nlist-style-type: disclosure-closed;\n\nmargin: 5px 0;\n\nmargin-left: 10px;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li.error{\n\ncolor: red;\n\n}\n");
 
   var AsyncAllegeWeb = function AsyncAllegeWeb(el) {
     // 初始化测试框架界面
