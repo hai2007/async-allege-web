@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.1.1
+ * version 0.2.0
  *
  * Copyright (c) 2022 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Tue Feb 22 2022 17:37:53 GMT+0800 (GMT+08:00)
+ * Date:Tue Feb 22 2022 22:07:20 GMT+0800 (中国标准时间)
  */
 (function () {
   'use strict';
@@ -374,6 +374,10 @@
         // 初始化此条测试条目展示位置
         var itemView = initItemView(frameView, title);
         doback({
+          // 自定义规则
+          "do": function _do(doback, mark) {
+            addResult(itemView, doback(), mark);
+          },
           // 相等
           equal: function equal(value, expect, mark) {
             addResult(itemView, value == expect, mark);
@@ -383,11 +387,11 @@
             addResult(itemView, value != expect, mark);
           },
           // 严格相等
-          deepEqual: function deepEqual(value, expect, mark) {
+          strictEqual: function strictEqual(value, expect, mark) {
             addResult(itemView, value === expect, mark);
           },
           // 不严格相等
-          notDeepEqual: function notDeepEqual(value, expect, mark) {
+          notStrictEqual: function notStrictEqual(value, expect, mark) {
             addResult(itemView, value !== expect, mark);
           }
         });

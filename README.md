@@ -56,10 +56,11 @@ allege.test("测试名称",function(handler){
 
 其中```handle```上包含了一些可以使用的测试断言，列举如下：
 
+- do(()=>boolean, mark)：自定义规则
 - equal(value, expect, mark)：相等
 - notEqual(value, expect, mark)：不相等
-- deepEqual(value, expect, mark)：严格相等
-- notDeepEqual(value, expect, mark)：不严格相等
+- strictEqual(value, expect, mark)：严格相等
+- notStrictEqual(value, expect, mark)：不严格相等
 
 开源协议
 ---------------------------------------

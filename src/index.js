@@ -14,6 +14,11 @@ let AsyncAllegeWeb = el => {
 
             doback({
 
+                // 自定义规则
+                do: (doback, mark) => {
+                    addResult(itemView, doback(), mark);
+                },
+
                 // 相等
                 equal: (value, expect, mark) => {
                     addResult(itemView, value == expect, mark);
@@ -25,12 +30,12 @@ let AsyncAllegeWeb = el => {
                 },
 
                 // 严格相等
-                deepEqual: (value, expect, mark) => {
+                strictEqual: (value, expect, mark) => {
                     addResult(itemView, value === expect, mark);
                 },
 
                 // 不严格相等
-                notDeepEqual: (value, expect, mark) => {
+                notStrictEqual: (value, expect, mark) => {
                     addResult(itemView, value !== expect, mark);
                 }
             });
