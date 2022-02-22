@@ -35,7 +35,7 @@ npm install --save async-allege-web
     <!-- 用于展示测试结果 -->
     <div id="async-allege-web"></div>
 
-    <!-- 引入测试语句 -->
+    <!-- 编辑测试语句 -->
     <script src="./test.spec.js"></script>
 
 </body>
@@ -43,13 +43,22 @@ npm install --save async-allege-web
 </html>
 ```
 
-```测试语句```就写在```test.spec.js```中（可以引入多个```测试语句```文件）。
+其中，编辑测试语句的文件```./test.spec.js```中的内容格式大致如下：
 
-### 断言语句
+```js
+var allege = AsyncAllegeWeb(document.getElementById('async-allege-web'));
 
-可以在```测试语句```文件中使用的推断是否成功等的语句，我们在下面列出：
+allege.test("测试名称",function(handler){
+    handler.equal(1, '1', '数字1和字符串1相等');
+});
+```
 
-> 温馨提示：设计开发中，敬请期待！
+其中```handle```上包含了一些可以使用的测试断言，列举如下：
+
+- equal(value, expect, mark)：相等
+- notEqual(value, expect, mark)：不相等
+- deepEqual(value, expect, mark)：严格相等
+- notDeepEqual(value, expect, mark)：不严格相等
 
 开源协议
 ---------------------------------------

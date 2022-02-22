@@ -9,7 +9,7 @@
  * Copyright (c) 2022 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Mon Feb 21 2022 17:37:42 GMT+0800 (GMT+08:00)
+ * Date:Tue Feb 22 2022 14:58:18 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -24,7 +24,31 @@
     }, _typeof(obj);
   }
 
-  var AsyncAllegeWeb = {}; // 导出
+  var AsyncAllegeWeb = function AsyncAllegeWeb(el) {
+    // 初始化测试框架界面
+    // todo
+    return {
+      test: function test(title, doback) {
+        // 初始化此条测试条目展示位置
+        // todo
+        doback({
+          // 相等
+          equal: function equal(value, expect, mark) {// todo
+          },
+          // 不相等
+          notEqual: function notEqual(value, expect, mark) {// todo
+          },
+          // 严格相等
+          deepEqual: function deepEqual(value, expect, mark) {// todo
+          },
+          // 不严格相等
+          notDeepEqual: function notDeepEqual(value, expect, mark) {// todo
+          }
+        });
+      }
+    };
+  }; // 导出
+
 
   if ((typeof module === "undefined" ? "undefined" : _typeof(module)) === "object" && _typeof(module.exports) === "object") {
     module.exports = AsyncAllegeWeb;
