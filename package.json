@@ -5,7 +5,7 @@
   "main": "./dist/async-allege-web.min.js",
   "scripts": {
     "start": "npm install && npm run build",
-    "build": "npm run rollup && npm run uglifyjs && nodejs --config ./nodejs.config.js",
+    "build": "nodejs --config ./nodejs.config.js compileStyle && npm run rollup && npm run uglifyjs && nodejs --config ./nodejs.config.js",
     "rollup": "rollup --config rollup.config.js",
     "uglifyjs": "uglifyjs ./dist/async-allege-web.js -m -o ./dist/async-allege-web.min.js"
   },
@@ -32,6 +32,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "@hai2007/algorithm": "^0.7.3",
     "@hai2007/nodejs": "^2.2.0",
     "@rollup/plugin-babel": "^5.2.1",
     "rollup": "^1.17.0",
