@@ -4,6 +4,7 @@
 <p>
   <a href="https://hai2007.gitee.io/npm-downloads?interval=7&packages=async-allege-web"><img src="https://img.shields.io/npm/dm/async-allege-web.svg" alt="downloads"></a>
   <a href="https://www.npmjs.com/package/async-allege-web"><img src="https://img.shields.io/npm/v/async-allege-web.svg" alt="Version"></a>
+  <a href="https://www.jsdelivr.com/package/npm/async-allege-web"><img src="https://data.jsdelivr.com/v1/package/npm/async-allege-web/badge" alt="CDN"></a>
   <a href="https://github.com/hai2007/async-allege-web/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/async-allege-web.svg" alt="License"></a>
   <a href="https://github.com/hai2007/async-allege-web">
       <img alt="GitHub repo stars" src="https://img.shields.io/github/stars/hai2007/async-allege-web?style=social">
@@ -19,31 +20,31 @@
 npm install --save async-allege-web
 ```
 
+然后，引入：
+
+```
+import AsyncAllegeWeb from "async-allege-web";
+```
+
+或者通过CDN的方式引入：
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/async-allege-web"></script>
+```
+
 然后，新建一个```index.html```文件，里面内容大概如下：
 
 ```html
-<!DOCTYPE html>
-<html lang="zh-cn">
+<!-- 用于展示测试结果 -->
+<div id="async-allege-web"></div>
 
-<head>
-    <meta charset="UTF-8">
-    <script src="node_modules/async-allege-web/dist/async-allege-web.js"></script>
-</head>
-
-<body>
-
-    <!-- 用于展示测试结果 -->
-    <div id="async-allege-web"></div>
-
-    <!-- 编辑测试语句 -->
-    <script src="./test.spec.js"></script>
-
-</body>
-
-</html>
+<!-- 编辑测试语句 -->
+<script>
+  // todo
+</script>
 ```
 
-其中，编辑测试语句的文件```./test.spec.js```中的内容格式大致如下：
+其中，编辑测试语句内容格式大致如下：
 
 ```js
 var allege = AsyncAllegeWeb(document.getElementById('async-allege-web'));
