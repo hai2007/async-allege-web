@@ -47,7 +47,7 @@ import AsyncAllegeWeb from "async-allege-web";
 其中，编辑测试语句内容格式大致如下：
 
 ```js
-var allege = AsyncAllegeWeb(document.getElementById('async-allege-web'));
+var allege = AsyncAllegeWeb(document.getElementById('async-allege-web')[, title]);
 
 allege.test("测试名称",function(handler){
     handler.equal(1, '1', '数字1和字符串1相等');

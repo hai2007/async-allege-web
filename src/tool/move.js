@@ -2,7 +2,7 @@ import xhtml from '@hai2007/browser/xhtml';
 
 export default function (el) {
     //绑定鼠标左键按下事件
-    xhtml.bind(el, 'mousedown', function mousedown(event) {
+    xhtml.bind(el, 'mousedown', function (event) {
 
         //解决浏览器全选无法拖拽弹框
         el.setCapture && el.setCapture();

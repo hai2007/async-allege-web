@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.2.0
+ * version 0.2.1
  *
  * Copyright (c) 2022 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Tue Feb 22 2022 22:07:20 GMT+0800 (中国标准时间)
+ * Date:Thu Feb 24 2022 16:05:30 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -295,7 +295,7 @@
 
   function move (el) {
     //绑定鼠标左键按下事件
-    xhtml.bind(el, 'mousedown', function mousedown(event) {
+    xhtml.bind(el, 'mousedown', function (event) {
       //解决浏览器全选无法拖拽弹框
       el.setCapture && el.setCapture(); // 需要控制的应该是父节点
 
@@ -321,11 +321,12 @@
   }
 
   var initFrameView = function initFrameView(el) {
+    var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "[测试] Async Allege Web";
     // 添加标记属性
     el.setAttribute('async-allege-web', ''); // 追加节点
 
     var h2 = document.createElement('h2');
-    h2.innerText = "[测试] Async Allege Web";
+    h2.innerText = title;
     el.appendChild(h2); // 赋予拖拽移动功能
 
     move(h2); // 追加用于存放测试结果的地方
@@ -344,12 +345,13 @@
     fieldset.appendChild(ul);
     return ul;
   };
-  var addResult = function addResult(el, flag, mark) {
+  var addResult = function addResult(rootEl, el, flag, mark) {
     var li = document.createElement('li');
     li.innerText = mark + "：" + flag;
 
     if (!flag) {
       li.setAttribute('class', 'error');
+      rootEl.setAttribute('class', 'error');
     }
 
     el.appendChild(li);
@@ -364,11 +366,30 @@
     head.appendChild(styleElement);
   }
 
-  addStylesClient("\n [async-allege-web]{\n\nposition: fixed;\n\nleft: 50px;\n\ntop: 50px;\n\nbackground-color: #8bc34a;\n\nborder: 4px solid #8bc34a;\n\nbox-shadow: 0 0 14px 6px white;\n\nfont-family: cursive;\n\n}\n/* 去掉前置索引 */\n [async-allege-web] li{\n\nlist-style-type: none;\n\n}\n/* 去掉不喜欢的间距 */\n [async-allege-web] ul, [async-allege-web] li, [async-allege-web] h2{\n\n-webkit-margin-before: 0;\n\n-webkit-margin-after: 0;\n\n-webkit-padding-start: 0;\n/* 去掉不喜欢的间距，针对火狐浏览器等 */\nmargin-block-end: 0;\n\nmargin-block-start: 0;\n\npadding-inline-start: 0;\n/* 修改IE和其它浏览器不一致问题 */\npadding: 0;\n\nmargin: 0;\n\n}\n\n [async-allege-web]>h2{\n\nuser-select: none;\n\nfont-size: 12px;\n\npadding: 10px;\n\ncursor: move;\n\n}\n\n [async-allege-web]>div{\n\nbackground-color: white;\n\nheight: 300px;\n\nwidth: 240px;\n\noverflow: auto;\n\n}\n\n [async-allege-web]>div>fieldset{\n\nmargin-top: 10px;\n\n}\n\n [async-allege-web]>div>fieldset>legend{\n\nfont-weight: 800;\n\nfont-size: 14px;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li{\n\nfont-size: 12px;\n\nlist-style-type: disclosure-closed;\n\nmargin: 5px 0;\n\nmargin-left: 10px;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li.error{\n\ncolor: red;\n\n}\n");
+  addStylesClient("\n [async-allege-web]{\n\nposition: fixed;\n\nbackground-color: #8bc34a;\n\nborder: 4px solid #8bc34a;\n\nbox-shadow: 0 0 10px 3px white;\n\nfont-family: cursive;\n\nz-index: 998;\n\n}\n\n [async-allege-web][active='yes']{\n\nz-index: 999;\n\n}\n\n [async-allege-web].error{\n\nbackground-color: #e40b0b;\n\nborder: 4px solid #e40b0b;\n\n}\n/* 去掉前置索引 */\n [async-allege-web] li{\n\nlist-style-type: none;\n\n}\n/* 去掉不喜欢的间距 */\n [async-allege-web] ul, [async-allege-web] li, [async-allege-web] h2{\n\n-webkit-margin-before: 0;\n\n-webkit-margin-after: 0;\n\n-webkit-padding-start: 0;\n/* 去掉不喜欢的间距，针对火狐浏览器等 */\nmargin-block-end: 0;\n\nmargin-block-start: 0;\n\npadding-inline-start: 0;\n/* 修改IE和其它浏览器不一致问题 */\npadding: 0;\n\nmargin: 0;\n\n}\n\n [async-allege-web]>h2{\n\nuser-select: none;\n\nfont-size: 12px;\n\npadding: 10px;\n\ncursor: move;\n\n}\n\n [async-allege-web]>div{\n\nbackground-color: white;\n\nheight: 300px;\n\nwidth: 240px;\n\noverflow: auto;\n\n}\n\n [async-allege-web]>div>fieldset{\n\nmargin-top: 10px;\n\n}\n\n [async-allege-web]>div>fieldset>legend{\n\nfont-weight: 800;\n\nfont-size: 14px;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li{\n\nfont-size: 12px;\n\nlist-style-type: disclosure-closed;\n\nmargin: 5px 0;\n\nmargin-left: 10px;\n\ncolor: #8bc34a;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li.error{\n\ncolor: red;\n\n}\n");
 
-  var AsyncAllegeWeb = function AsyncAllegeWeb(el) {
-    // 初始化测试框架界面
-    var frameView = initFrameView(el);
+  var left = 35,
+      top = 35;
+
+  var AsyncAllegeWeb = function AsyncAllegeWeb(_el, title) {
+    var el = document.createElement('div');
+
+    _el.appendChild(el);
+
+    el.style.left = (left += 15) + "px";
+    el.style.top = (top += 15) + "px"; // 标准当前窗口为活动窗口
+
+    xhtml.bind(el, 'mousedown', function (event) {
+      var els = xhtml.children(_el);
+
+      for (var i = 0; i < els.length; i++) {
+        els[i].setAttribute('active', 'no');
+      }
+
+      el.setAttribute('active', 'yes');
+    }); // 初始化测试框架界面
+
+    var frameView = initFrameView(el, title);
     return {
       test: function test(title, doback) {
         // 初始化此条测试条目展示位置
@@ -376,23 +397,23 @@
         doback({
           // 自定义规则
           "do": function _do(doback, mark) {
-            addResult(itemView, doback(), mark);
+            addResult(el, itemView, doback(), mark);
           },
           // 相等
           equal: function equal(value, expect, mark) {
-            addResult(itemView, value == expect, mark);
+            addResult(el, itemView, value == expect, mark);
           },
           // 不相等
           notEqual: function notEqual(value, expect, mark) {
-            addResult(itemView, value != expect, mark);
+            addResult(el, itemView, value != expect, mark);
           },
           // 严格相等
           strictEqual: function strictEqual(value, expect, mark) {
-            addResult(itemView, value === expect, mark);
+            addResult(el, itemView, value === expect, mark);
           },
           // 不严格相等
           notStrictEqual: function notStrictEqual(value, expect, mark) {
-            addResult(itemView, value !== expect, mark);
+            addResult(el, itemView, value !== expect, mark);
           }
         });
       }

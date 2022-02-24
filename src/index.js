@@ -1,10 +1,28 @@
-import { initFrameView, initItemView, addResult } from "./bootstrap"
-import "../.style.js"
+import { initFrameView, initItemView, addResult } from "./bootstrap";
+import "../.style.js";
+import xhtml from '@hai2007/browser/xhtml';
 
-let AsyncAllegeWeb = el => {
+let left = 35, top = 35;
+
+let AsyncAllegeWeb = (_el, title) => {
+
+    let el = document.createElement('div');
+    _el.appendChild(el);
+
+    el.style.left = (left += 15) + "px";
+    el.style.top = (top += 15) + "px";
+
+    // 标准当前窗口为活动窗口
+    xhtml.bind(el, 'mousedown', function (event) {
+        let els = xhtml.children(_el);
+        for (let i = 0; i < els.length; i++) {
+            els[i].setAttribute('active', 'no');
+        }
+        el.setAttribute('active', 'yes');
+    });
 
     // 初始化测试框架界面
-    let frameView = initFrameView(el);
+    let frameView = initFrameView(el, title);
 
     return {
         test(title, doback) {
@@ -16,27 +34,27 @@ let AsyncAllegeWeb = el => {
 
                 // 自定义规则
                 do: (doback, mark) => {
-                    addResult(itemView, doback(), mark);
+                    addResult(el, itemView, doback(), mark);
                 },
 
                 // 相等
                 equal: (value, expect, mark) => {
-                    addResult(itemView, value == expect, mark);
+                    addResult(el, itemView, value == expect, mark);
                 },
 
                 // 不相等
                 notEqual: (value, expect, mark) => {
-                    addResult(itemView, value != expect, mark);
+                    addResult(el, itemView, value != expect, mark);
                 },
 
                 // 严格相等
                 strictEqual: (value, expect, mark) => {
-                    addResult(itemView, value === expect, mark);
+                    addResult(el, itemView, value === expect, mark);
                 },
 
                 // 不严格相等
                 notStrictEqual: (value, expect, mark) => {
-                    addResult(itemView, value !== expect, mark);
+                    addResult(el, itemView, value !== expect, mark);
                 }
             });
         }
