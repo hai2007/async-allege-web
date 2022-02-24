@@ -16,3 +16,7 @@ v0.2.1:
     changes:
       -  新增主标题并支持多窗口
       -  对错误和正确提示修改的更明显
+v0.3.0:
+    date:2022-02-24
+    changes:
+      -  新增deepEqual和notDeepEqual

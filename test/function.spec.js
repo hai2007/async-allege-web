@@ -15,3 +15,17 @@ allege.test("strictEqual", function (handler) {
 allege.test("notStrictEqual", function (handler) {
     handler.notStrictEqual(1, '1', '数字1和字符串1不严格相等');
 });
+
+allege.test("deepEqual", function (handler) {
+    handler.deepEqual(1, '1', '数字1和字符串1深度相等');
+    handler.deepEqual([1, 2, 3], [1, 2, 3, 4], '数组');
+    handler.deepEqual([1, 2], [1, 2, 3], '数组');
+    handler.deepEqual([1, 2, 3], [1, 2, 3], '数组');
+});
+
+allege.test("notDeepEqual", function (handler) {
+    handler.notDeepEqual(1, '1', '数字1和字符串1深度相等');
+    handler.notDeepEqual([1, 2, 3], [1, 2, 3, 4], '数组');
+    handler.notDeepEqual([1, 2], [1, 2, 3], '数组');
+    handler.notDeepEqual([1, 2, 3], [1, 2, 3], '数组');
+});

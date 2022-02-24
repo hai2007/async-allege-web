@@ -1,6 +1,7 @@
 import { initFrameView, initItemView, addResult } from "./bootstrap";
 import "../.style.js";
 import xhtml from '@hai2007/browser/xhtml';
+import deepEqual from './tool/deepEqual';
 
 let left = 35, top = 35;
 
@@ -55,6 +56,16 @@ let AsyncAllegeWeb = (_el, title) => {
                 // 不严格相等
                 notStrictEqual: (value, expect, mark) => {
                     addResult(el, itemView, value !== expect, mark);
+                },
+
+                // 深度相等
+                deepEqual: (value, expect, mark) => {
+                    addResult(el, itemView, deepEqual(value, expect), mark);
+                },
+
+                // 不深度相等
+                notDeepEqual: (value, expect, mark) => {
+                    addResult(el, itemView, !deepEqual(value, expect), mark);
                 }
             });
         }

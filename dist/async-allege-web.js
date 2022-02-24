@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.2.1
+ * version 0.3.0
  *
  * Copyright (c) 2022 hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Thu Feb 24 2022 16:05:30 GMT+0800 (GMT+08:00)
+ * Date:Thu Feb 24 2022 17:09:38 GMT+0800 (GMT+08:00)
  */
 (function () {
   'use strict';
@@ -368,6 +368,55 @@
 
   addStylesClient("\n [async-allege-web]{\n\nposition: fixed;\n\nbackground-color: #8bc34a;\n\nborder: 4px solid #8bc34a;\n\nbox-shadow: 0 0 10px 3px white;\n\nfont-family: cursive;\n\nz-index: 998;\n\n}\n\n [async-allege-web][active='yes']{\n\nz-index: 999;\n\n}\n\n [async-allege-web].error{\n\nbackground-color: #e40b0b;\n\nborder: 4px solid #e40b0b;\n\n}\n/* 去掉前置索引 */\n [async-allege-web] li{\n\nlist-style-type: none;\n\n}\n/* 去掉不喜欢的间距 */\n [async-allege-web] ul, [async-allege-web] li, [async-allege-web] h2{\n\n-webkit-margin-before: 0;\n\n-webkit-margin-after: 0;\n\n-webkit-padding-start: 0;\n/* 去掉不喜欢的间距，针对火狐浏览器等 */\nmargin-block-end: 0;\n\nmargin-block-start: 0;\n\npadding-inline-start: 0;\n/* 修改IE和其它浏览器不一致问题 */\npadding: 0;\n\nmargin: 0;\n\n}\n\n [async-allege-web]>h2{\n\nuser-select: none;\n\nfont-size: 12px;\n\npadding: 10px;\n\ncursor: move;\n\n}\n\n [async-allege-web]>div{\n\nbackground-color: white;\n\nheight: 300px;\n\nwidth: 240px;\n\noverflow: auto;\n\n}\n\n [async-allege-web]>div>fieldset{\n\nmargin-top: 10px;\n\n}\n\n [async-allege-web]>div>fieldset>legend{\n\nfont-weight: 800;\n\nfont-size: 14px;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li{\n\nfont-size: 12px;\n\nlist-style-type: disclosure-closed;\n\nmargin: 5px 0;\n\nmargin-left: 10px;\n\ncolor: #8bc34a;\n\n}\n\n [async-allege-web]>div>fieldset>ul>li.error{\n\ncolor: red;\n\n}\n");
 
+  /**
+   * 判断一个值是不是Object。
+   *
+   * @param {*} value 需要判断类型的值
+   * @returns {boolean} 如果是Object返回true，否则返回false
+   */
+  function _isObject (value) {
+    var type = _typeof(value);
+
+    return value != null && (type === 'object' || type === 'function');
+  }
+
+  /*!
+   * 💡 - 值类型判断方法
+   * https://github.com/hai2007/tool.js/blob/master/type.js
+   *
+   * author hai2007 < https://hai2007.gitee.io/sweethome >
+   *
+   * Copyright (c) 2020-present hai2007 走一步，再走一步。
+   * Released under the MIT license
+   */
+
+
+  var isObject = _isObject; // 基本类型
+
+  var isEqual = function isEqual(val1, val2) {
+    if (isObject(val1) && isObject(val2)) {
+      for (var key1 in val1) {
+        if (!isEqual(val1[key1], val2[key1])) {
+          return false;
+        }
+      }
+
+      for (var key2 in val2) {
+        if (!isEqual(val1[key2], val2[key2])) {
+          return false;
+        }
+      }
+    } else {
+      return val1 == val2;
+    }
+
+    return true;
+  };
+
+  function _deepEqual (val1, val2) {
+    return isEqual(val1, val2);
+  }
+
   var left = 35,
       top = 35;
 
@@ -414,6 +463,14 @@
           // 不严格相等
           notStrictEqual: function notStrictEqual(value, expect, mark) {
             addResult(el, itemView, value !== expect, mark);
+          },
+          // 深度相等
+          deepEqual: function deepEqual(value, expect, mark) {
+            addResult(el, itemView, _deepEqual(value, expect), mark);
+          },
+          // 不深度相等
+          notDeepEqual: function notDeepEqual(value, expect, mark) {
+            addResult(el, itemView, !_deepEqual(value, expect), mark);
           }
         });
       }

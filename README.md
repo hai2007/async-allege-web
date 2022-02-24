@@ -61,6 +61,8 @@ allege.test("测试名称",function(handler){
 - notEqual(value, expect, mark)：不相等
 - strictEqual(value, expect, mark)：严格相等
 - notStrictEqual(value, expect, mark)：不严格相等
+- deepEqual(value, expect, mark)：深度相等
+- notDeepEqual(value, expect, mark)：不深度相等
 
 开源协议
 ---------------------------------------

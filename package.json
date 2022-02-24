@@ -1,6 +1,6 @@
 {
     "name": "async-allege-web",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "description": "一个为前端设计的可以编辑异步断言的测试框架。",
     "main": "./dist/async-allege-web.min.js",
     "scripts": {
